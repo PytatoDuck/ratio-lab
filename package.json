@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "@tailwindcss/vite": "^4.2.4",
     "clsx": "^2.1.1",
     "lucide-react": "^1.14.0",
@@ -17,7 +19,8 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwind-merge": "^3.5.0",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.2.4",
+    "vitest": "^4.1.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
