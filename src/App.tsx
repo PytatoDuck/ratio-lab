@@ -11,28 +11,30 @@ const App: React.FC = () => {
     <div className="flex flex-col min-h-screen relative z-0">
       <Header />
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8">
+      <main className="flex-1 w-full max-w-400 mx-auto px-4 py-8">
         <motion.div
-          className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8"
+          className="flex flex-col gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* LEFT COLUMN: Editing Toolbox */}
-          <div className="order-2 lg:order-none lg:col-span-4 flex flex-col gap-6">
-            <Toolbox />
-          </div>
 
-          {/* RIGHT COLUMN: Canvas & Active List */}
-          <div className="contents lg:flex lg:flex-col lg:col-span-8 lg:gap-6">
-            <div className="order-1 lg:order-none w-full">
+          {/* ROW 1: Toolbox + Canvas */}
+          <section className="flex flex-col lg:flex-row gap-6 lg:gap-8 relative z-20">
+            <div className="w-full lg:w-95 xl:w-105 shrink-0 order-2 lg:order-1">
+              <Toolbox />
+            </div>
+
+            <div className="flex-1 min-w-0 order-1 lg:order-2">
               <Canvas />
             </div>
+          </section>
 
-            <div className="order-3 lg:order-none w-full">
-              <OverlayList />
-            </div>
-          </div>
+          {/* ROW 2: Overlays */}
+          <section className="w-full order-3 relative z-10">
+            <OverlayList />
+          </section>
+
         </motion.div>
       </main>
 

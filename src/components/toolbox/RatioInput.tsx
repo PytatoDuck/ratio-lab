@@ -26,7 +26,7 @@ export const RatioInput: React.FC = () => {
         Target Ratio
       </label>
 
-      <div className="flex gap-2 items-center h-[46px]">
+      <div className="flex gap-2 items-center h-11.5">
         {/* Separated X & Y Numeric Inputs */}
         <div className="flex flex-1 items-center bg-surface-900 border border-surface-700 rounded-xl overflow-hidden focus-within:border-primary-500 focus-within:ring-2 focus-within:ring-primary-500/20 transition-all h-full shadow-inner">
           <input
@@ -57,10 +57,10 @@ export const RatioInput: React.FC = () => {
             <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", isDropdownOpen && "rotate-180")} />
           </button>
 
-          {/* Actual Dropdown Menu (Overlays correctly because Toolbox isn't hiding overflows) */}
+          {/* Actual Dropdown Menu */}
           {isDropdownOpen && (
             <>
-              <div className="fixed inset-0 z-40" onClick={() => setIsDropdownOpen(false)} />
+              <div className="fixed inset-0 z-80" onClick={() => setIsDropdownOpen(false)} />
 
               <div className="absolute right-0 top-[calc(100%+8px)] w-64 bg-surface-800/95 backdrop-blur-xl border border-surface-700 rounded-xl shadow-2xl z-50 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="px-3 py-1.5 mb-1 border-b border-surface-700/50">

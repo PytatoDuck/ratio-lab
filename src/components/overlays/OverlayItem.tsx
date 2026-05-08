@@ -37,7 +37,7 @@ export const OverlayItem: React.FC<OverlayItemProps> = ({ overlay, index, isLast
           : "bg-surface-800/40 border-surface-700 hover:border-surface-600 hover:bg-surface-800"
       )}
     >
-      {/* 1. Selection Indicator & Color Swatch */}
+      {/* Selection Indicator & Color Swatch */}
       <div className="relative shrink-0">
         <div
           className="w-10 h-10 rounded-lg shadow-inner flex items-center justify-center transition-transform group-hover:scale-105"
@@ -52,7 +52,7 @@ export const OverlayItem: React.FC<OverlayItemProps> = ({ overlay, index, isLast
         )}
       </div>
 
-      {/* 2. Info Section */}
+      {/* Info Section */}
       <div className="flex-1 min-w-0">
         <h4 className={cn(
           "text-sm font-bold truncate transition-colors",
@@ -70,7 +70,7 @@ export const OverlayItem: React.FC<OverlayItemProps> = ({ overlay, index, isLast
         </div>
       </div>
 
-      {/* 3. Action Buttons (Hidden on mobile until active, visible on hover for desktop) */}
+      {/* Action Buttons */}
       <div className="flex items-center gap-1 shrink-0 opacity-0 group-hover:opacity-100 lg:transition-opacity">
 
         {/* Move Up */}
@@ -105,7 +105,7 @@ export const OverlayItem: React.FC<OverlayItemProps> = ({ overlay, index, isLast
         )}
       </div>
 
-      {/* 4. Active Selection Ring (Decorative) */}
+      {/* Active Selection Ring */}
       {isSelected && (
         <div className="absolute inset-0 rounded-xl border border-primary-500/20 pointer-events-none" />
       )}

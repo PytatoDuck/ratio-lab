@@ -4,10 +4,10 @@
  */
 
 export const OVERLAY_COLORS = [
+  '#10b981', // Emerald
   '#38bdf8', // Light Blue / Sky
   '#f472b6', // Pink
   '#facc15', // Yellow
-  '#34d399', // Emerald / Green
   '#fb923c', // Orange
   '#a78bfa', // Violet / Purple
   '#fb7185', // Rose

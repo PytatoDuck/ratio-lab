@@ -3,40 +3,37 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  /* Vibrant Cyan accents for high contrast */
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
 
-  /* Sleek, deep dark mode (Zinc based) */
-  --color-surface-900: #09090b; /* Near black background */
-  --color-surface-800: #18181b; /* Cards & Panels */
-  --color-surface-700: #27272a; /* Borders & Hover states */
-  --color-surface-600: #3f3f46; /* Lighter accents */
+  --color-surface-900: #09090b;
+  --color-surface-800: #18181b;
+  --color-surface-700: #27272a;
+  --color-surface-600: #3f3f46;
 }
 
 @layer base {
   body {
     @apply bg-surface-900 text-slate-200 antialiased min-h-screen selection:bg-primary-500/30;
     color-scheme: dark;
-    /* Smooth radial gradient overlay for a less "boring" flat background */
     background-image: radial-gradient(circle at 50% -20%, #18181b 0%, #09090b 80%);
     background-attachment: fixed;
   }
 
-  /* Custom minimal scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-surface-700 rounded-full hover:bg-surface-600 transition-colors;
   }
 
-  /* Clean number inputs */
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;

@@ -8,7 +8,6 @@ export const Canvas: React.FC = () => {
   const baseOverlay = overlays[0];
   const comparisonOverlays = overlays.slice(1);
 
-  // Calculate maximum dimensions to ensure viewBox captures everything
   const maxDimensions = useMemo(() => {
     let maxWidth = baseOverlay.width || 1;
     let maxHeight = baseOverlay.height || 1;
@@ -18,17 +17,18 @@ export const Canvas: React.FC = () => {
       if (overlay.height > maxHeight) maxHeight = overlay.height;
     });
 
-    // 15% padding for breathing room around the largest shape
+    // 15% padding for breathing room
     const paddingX = maxWidth * 0.15;
     const paddingY = maxHeight * 0.15;
 
     return {
       totalWidth: maxWidth + paddingX * 2,
       totalHeight: maxHeight + paddingY * 2,
+      centerX: (maxWidth + paddingX * 2) / 2,
+      centerY: (maxHeight + paddingY * 2) / 2,
     };
   }, [baseOverlay, comparisonOverlays]);
 
-  // Spring physics for smooth fluid motion
   const springTransition: Transition = {
     type: "spring",
     stiffness: 200,
@@ -39,7 +39,6 @@ export const Canvas: React.FC = () => {
   return (
     <div className="w-full bg-surface-800/80 backdrop-blur-xl border border-surface-700/50 rounded-2xl overflow-hidden shadow-2xl relative flex items-center justify-center p-4 min-h-75 lg:min-h-125 group">
 
-      {/* Sleek Dot Matrix Grid Background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.15] transition-opacity duration-1000 group-hover:opacity-[0.25]"
         style={{
@@ -49,7 +48,7 @@ export const Canvas: React.FC = () => {
       />
 
       <motion.svg
-        className="w-full h-full max-h-[60vh] drop-shadow-xl"
+        className="w-full h-full max-h-[75vh] drop-shadow-xl"
         initial={false}
         animate={{
           viewBox: `0 0 ${maxDimensions.totalWidth} ${maxDimensions.totalHeight}`
@@ -57,12 +56,23 @@ export const Canvas: React.FC = () => {
         transition={springTransition}
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Render Base Layer (Centered) */}
+        <motion.line
+          x1={maxDimensions.centerX} y1={0} x2={maxDimensions.centerX} y2={maxDimensions.totalHeight}
+          stroke="#ffffff" strokeOpacity={0.08} strokeWidth={Math.max(maxDimensions.totalWidth * 0.001, 1)}
+          strokeDasharray="10,10"
+        />
+        <motion.line
+          x1={0} y1={maxDimensions.centerY} x2={maxDimensions.totalWidth} y2={maxDimensions.centerY}
+          stroke="#ffffff" strokeOpacity={0.08} strokeWidth={Math.max(maxDimensions.totalWidth * 0.001, 1)}
+          strokeDasharray="10,10"
+        />
+
+        {/* Render Base Layer */}
         <motion.rect
           initial={false}
           animate={{
-            x: (maxDimensions.totalWidth - baseOverlay.width) / 2,
-            y: (maxDimensions.totalHeight - baseOverlay.height) / 2,
+            x: maxDimensions.centerX - (baseOverlay.width / 2),
+            y: maxDimensions.centerY - (baseOverlay.height / 2),
             width: baseOverlay.width,
             height: baseOverlay.height,
             fill: baseOverlay.color,
@@ -73,7 +83,7 @@ export const Canvas: React.FC = () => {
           transition={springTransition}
         />
 
-        {/* Render Comparison Layers (Centered) */}
+        {/* Render Comparison Layers */}
         {comparisonOverlays.map((overlay, index) => {
           const dynamicStrokeWidth = Math.max(maxDimensions.totalWidth * 0.003, 2);
 
@@ -84,8 +94,8 @@ export const Canvas: React.FC = () => {
               animate={{
                 opacity: 1,
                 scale: 1,
-                x: (maxDimensions.totalWidth - overlay.width) / 2,
-                y: (maxDimensions.totalHeight - overlay.height) / 2,
+                x: maxDimensions.centerX - (overlay.width / 2),
+                y: maxDimensions.centerY - (overlay.height / 2),
                 width: overlay.width,
                 height: overlay.height,
                 stroke: overlay.color,
@@ -102,10 +112,9 @@ export const Canvas: React.FC = () => {
         })}
       </motion.svg>
 
-      {/* Info Badge */}
       <div className="absolute bottom-4 right-4 flex items-center gap-2 pointer-events-none">
         <span className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold bg-surface-900/80 px-2.5 py-1.5 rounded-md backdrop-blur-md border border-surface-700/50 shadow-lg">
-          Base: {baseOverlay.width} × {baseOverlay.height}
+          Base: {baseOverlay.width} x {baseOverlay.height}
         </span>
       </div>
     </div>

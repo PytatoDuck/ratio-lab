@@ -23,7 +23,6 @@ export const ColorPicker: React.FC = () => {
               onClick={() => updateOverlay(selectedOverlay.id, { color })}
               title={`Select ${color}`}
               className={cn(
-                // Base styles
                 "w-8 h-8 rounded-full border-2 transition-all cursor-pointer",
                 "hover:scale-110 active:scale-95",
                 // Selected state: bright border and subtle glow
@@ -33,7 +32,6 @@ export const ColorPicker: React.FC = () => {
               )}
               style={{ backgroundColor: color }}
             >
-              {/* Screen reader only label */}
               <span className="sr-only">Color {color}</span>
             </button>
           );

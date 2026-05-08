@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lock, Unlock } from 'lucide-react';
+import { Lock, Unlock, ArrowRightLeft } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { cn } from '../../lib/utils';
 
@@ -16,11 +16,32 @@ export const Dimensions: React.FC = () => {
     updateOverlay(selectedOverlay.id, { isLocked: !selectedOverlay.isLocked });
   };
 
+  const handleFlip = () => {
+    updateOverlay(selectedOverlay.id, {
+      width: selectedOverlay.height,
+      height: selectedOverlay.width,
+      ratioX: selectedOverlay.ratioY,
+      ratioY: selectedOverlay.ratioX,
+    });
+  };
+
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-        Dimensions (px)
-      </h3>
+      {/* Header with Flip Button */}
+      <div className="flex items-center justify-between">
+        <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+          Dimensions (px)
+        </h3>
+
+        <button
+          onClick={handleFlip}
+          className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface-800 border border-surface-700 text-slate-400 hover:text-primary-400 hover:border-primary-500/40 hover:bg-primary-500/10 transition-all text-[9px] uppercase font-bold tracking-wider"
+          title="Swap Width and Height"
+        >
+          <ArrowRightLeft className="w-3 h-3" />
+          Flip
+        </button>
+      </div>
 
       <div className="relative flex items-center gap-3">
 
@@ -37,7 +58,6 @@ export const Dimensions: React.FC = () => {
           />
         </div>
 
-        {/* Floating Lock Toggle (No lines) */}
         <div className="flex flex-col items-center justify-center pt-5">
           <button
             onClick={toggleLock}
