@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Ratio:Lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Ratio:Lab** is a tool for visualizing and comparing aspect ratios and resolutions.
 
-Currently, two official plugins are available:
+- **Lee Canvas**: A visualizer that automatically scales and centers all layers for comparison.
+- **4v1**: Add up to 4 active overlays to compare against a Base Canvas.
+- **Flip-Flop**: Orientation flipping to swap between landscape and portrait modes.
+- **UI**: A fancy-ass dark mode interface built with Emerald accents, high contrast colors, and smooth Framer Motion animations.
+- **Math Accuracy**: I don't math good... LLM overload says **Robust internal logic for GCD (Greatest Common Divisor) and dimension calculation, fully verified with unit tests**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+- [React 19](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind](https://tailwindcss.com/)
+- [Framer Motion](https://motion.dev/)
+- [Lucide React](https://lucide.dev/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation (In case I forget)
 
-## Expanding the ESLint configuration
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/PytatoDuck/ratio-lab.git
+   cd ratio-lab
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+4. **Run math logic tests**
+   ```bash
+   npm run test
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## How it Works
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Set the Base**: The top item in your layer list is the **Base Canvas**. All other overlays will be visually compared against its size.
+2. **Add Overlays**: Use the "Add Overlay" button to create a comparison layer.
+3. **Toggle Lock**: 
+   - **Locked**: Changing the width automatically adjusts the height to maintain your Target Ratio.
+   - **Unlocked**: Changing dimensions manually will update and simplify the ratio.
+4. **Reorder**: Use the up/down arrows on layers to change which layer acts as the primary Base.
