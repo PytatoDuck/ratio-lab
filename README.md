@@ -47,3 +47,7 @@
    - **Locked**: Changing the width automatically adjusts the height to maintain your Target Ratio.
    - **Unlocked**: Changing dimensions manually will update and simplify the ratio.
 4. **Reorder**: Use the up/down arrows on layers to change which layer acts as the primary Base.
+
+## Contributing
+
+Contributions are welcome! Please see our [**Contributing Guide**](CONTRIBUTING.md) for more details on how to get started.
