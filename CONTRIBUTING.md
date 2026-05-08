@@ -29,6 +29,4 @@ We follow the "fork-and-pull" Git workflow.
 5.  **Push** your branch to your fork on GitHub: `git push origin name-of-your-feature-or-fix`
 6.  Open a **Pull Request** from your fork to **this** repository.
 
-**IMPORTANT:** All pull requests should be made against the **`dev`** branch. Pull requests made against the `main` branch will be closed.
-
 Thank you again for your contribution!
