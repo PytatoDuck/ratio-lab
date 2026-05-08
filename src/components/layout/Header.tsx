@@ -1,5 +1,4 @@
 import React from 'react';
-import { Layers } from 'lucide-react';
 import { APP_CONFIG } from '../../constants/config';
 
 export const Header: React.FC = () => {
@@ -15,13 +14,6 @@ export const Header: React.FC = () => {
 
         {/* Logo & App Name */}
         <div className="flex items-center gap-3 cursor-pointer group">
-
-          <div className="relative flex items-center justify-center">
-            {/* Glowing orb behind the icon */}
-            <div className="absolute inset-0 bg-primary-500/20 rounded-full blur-md scale-150 group-hover:scale-[2] group-hover:bg-primary-500/30 transition-all duration-500" />
-            <Layers className="w-6 h-6 text-primary-400 relative z-10 group-hover:text-primary-300 transition-colors" />
-          </div>
-
           <h1 className="font-extrabold text-xl tracking-tight flex items-center drop-shadow-sm">
             <span className="text-slate-100">Ratio</span>
             <span className="text-surface-600 mx-0.5 font-mono font-medium -translate-y-px group-hover:text-primary-500/50 transition-colors duration-300">:</span>
