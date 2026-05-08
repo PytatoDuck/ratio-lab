@@ -1,4 +1,4 @@
-# Ratio:Lab
+![banner](.github/assets/banner.png)
 
 **[Ratio:Lab](https://ratio-lab.pytato.workers.dev/)** is a tool for visualizing and comparing aspect ratios and resolutions.
 
